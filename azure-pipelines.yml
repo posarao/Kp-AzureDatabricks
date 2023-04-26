@@ -4,8 +4,8 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-Jobs:
--job: Job1
+jobs:
+- job: Job1
 steps:
 - script: echo Hello, world changed!
   displayName: 'Run a one-line script'
