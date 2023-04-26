@@ -8,6 +8,32 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
+  
+  stages:
+    - stage: Build
+    jobs:
+    -job: Buildjob
+    steps:
+    - bash: echo "Do the build
+ - stage: DevDeploy
+    jobs:
+    - deployment: Devdeployjob
+    environment: Dev
+     strategy:
+      runOnce:
+        deploy:
+          steps:
+            - script: echo deploy to Dev
+     - stage: QADeploy
+    jobs:
+    - deployment: QADeployjob
+    environment: QA
+     strategy:
+      runOnce:
+        deploy:
+          steps:
+            - script: echo deploy to QA
+ 
 
 steps:
 - script: echo Hello, world, Changed!
