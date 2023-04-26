@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
   
   stages:
     - stage: Build
@@ -18,13 +18,13 @@ pool:
  - stage: DevDeploy
     jobs:
     - deployment: Devdeployjob
-    environment: Dev
-     strategy:
-      runOnce:
-        deploy:
-          steps:
-            - script: echo deploy to Dev
-     - stage: QADeploy
+       environment: Dev
+         strategy:
+          runOnce:
+           deploy:
+             steps:
+             - script: echo deploy to Dev
+ - stage: QADeploy
     jobs:
     - deployment: QADeployjob
     environment: QA
